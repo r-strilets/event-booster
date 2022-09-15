@@ -1,2 +1,16 @@
 @import './common';
 @import './example';
+
+//utils
+@import './utils/varialbles';
+@import './utils/mixin';
+@import './utils/visuali_hidden';
+//base
+@import './base/reset';
+@import './base/body';
+//components
+
+//layout
+@import './layouts/header.scss';
+@import './layouts/main.scss';
+@import './layouts/footer.scss';

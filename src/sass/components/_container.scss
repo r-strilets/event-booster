@@ -3,17 +3,18 @@
   margin-right: auto;
   padding-left: 20px;
   padding-right: 20px;
-  width: 320px;
-
+  @include mq(mob) {
+    max-width: 320px;
+  }
   @include mq(tablet) {
     padding-left: 32px;
     padding-right: 32px;
-    width: 768px;
+    max-width: 768px;
   }
 
   @include mq(desktop) {
     padding-left: 16px;
     padding-right: 16px;
-    width: 1280px;
+    max-width: 1280px;
   }
 }

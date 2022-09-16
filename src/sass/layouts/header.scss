@@ -1,0 +1,115 @@
+.header {
+  position: relative;
+  height: 364px;
+
+  @include mq(desktop) {
+    height: 446px;
+  }
+  background: url('../images/header_320.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  @media (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    background-image: url('../images/header_320@2x.jpg');
+  }
+
+  @media screen and (min-width: 768px) {
+    background: url('../images/header_768.jpg');
+
+    @media (min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: url('../images/header_768@2x.jpg');
+    }
+  }
+  @media screen and (min-width: 768px) {
+    background: url('../images/header_1280.jpg');
+
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    @media (min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: url('../images/header_1280@2x.jpg');
+    }
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+}
+.header-title {
+  font-size: 18px;
+  font-weight: 900;
+  line-height: 22px;
+  text-align: center;
+  color: var(--second-text-color);
+  margin-bottom: 24px;
+  padding-top: 80px;
+}
+.logo {
+  display: block;
+  position: absolute;
+  @include mq(mob) {
+    width: 214px;
+    height: 214px;
+    top: -107px;
+    left: -107px;
+  }
+  @include mq(tablet) {
+    width: 350px;
+    height: 286px;
+    top: -143px;
+    left: -175px;
+  }
+  @include mq(desktop) {
+    width: 400px;
+    height: 400px;
+    top: -200px;
+    left: -200px;
+  }
+  background: linear-gradient(hsla(0, 0%, 76.9%, 0.03), hsla(0, 0%, 76.9%, 0));
+  backdrop-filter: blur(30px);
+  border-radius: 50%;
+}
+.logo__image {
+  position: relative;
+  width: 150px;
+  top: 0;
+  left: 0;
+}
+.form-input,
+.form-select {
+  position: relative;
+  width: 280px;
+  height: 40px;
+  font-size: 16px;
+  line-height: 20px;
+  color: var(--third-text-color);
+
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding-left: 15px;
+}
+select {
+  font: inherit;
+  letter-spacing: inherit;
+  word-spacing: inherit;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+select:not([multiple]) {
+  padding-right: 1.2em;
+  background-repeat: no-repeat;
+  background-position: calc(100% - 0.25em) 0.35em;
+  background-size: 0.85em auto;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'%3E%3Cpath d='M70.3 13.8L40 66.3 9.7 13.8z' fill='%23000'%3E%3C/path%3E%3C/svg%3E");
+}
+
+/* скроет иконку стрелки в IE */
+select::-ms-expand {
+  display: none;
+}

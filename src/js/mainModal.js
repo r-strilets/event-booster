@@ -1,29 +1,15 @@
-function createModal(response) {
+export function createModal(response) {
   return response.reduce(
     (acc, { info, city, country, name, images, dates, url }) =>
       acc +
-      ` <div class="event-card" hidden>
- <picture
-        class="gallery__artist--img"
-      >
-        <source
-          srcset="
-          ${images[1].url},          
-          "
-          media="(min-width:1280px)"
-        />
-        <source
-          srcset="
-          ${images[1].url},            
-          "
-          media="(min-width:768px)"
-        />
+      ` <div class="event-card">
+     <button type="button" class="close__modal"><svg>
+  <use href="../images/sprite.svg#icon-close"></use>
+</svg></button>
         <img
-          src="./images/teacher/elena-moreva-mob.jpg"
+          src=""
           alt="photo"
           loading="lazy"
-        />
-      </picture>
       <div class="info">
         <p class="info-item">
           <b>INFO</b>${info}
@@ -39,10 +25,14 @@ function createModal(response) {
         <p class="info-item">
           <b>WHO </b>${name}
         </p>
-         <p class="info-item">
+        ${response.prices
+          .map(
+            price => `<p class="info-item">
           <b>PRICES </b>${name}
-          <button><a href= "${url}">BUY TICKETS</a></button>
-        </p>
+          <button><a href= "${price.url}">BUY TICKETS</a></button>
+        </p>`
+          )
+          .join('')}
       </div>
       <button class="info__button"><a href=" https://www.google.com/${name}">MORE FROM THIS AUTHOR</a></button>
     </div> `,
@@ -50,9 +40,9 @@ function createModal(response) {
   );
 }
 
-const modalButton = document.querySelector('info__button');
-modalButton.addEventListener('click', googleSearch);
+// const modalButton = document.querySelector('info__button');
+// modalButton.addEventListener('click', googleSearch);
 
-function googleSearch(response) {
-  window.open(`https://www.google.com/search?q=${response.name}`);
-}
+// function googleSearch(response) {
+//   window.open(`https://www.google.com/search?q=${response.name}`);
+// }

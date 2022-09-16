@@ -1,7 +1,7 @@
 export function createMarkup(events) {
   return events
     .map(
-      event => `<div class="gallery__item">  
+      event => `<div class="gallery__item" data-id="${event.id}">  
   <picture
         class="gallery__img"
       >

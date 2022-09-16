@@ -3,14 +3,13 @@ import { fetchEvents } from './js/fetchEvents';
 import { EventAPI } from './js/eventapi';
 import { createMarkup } from './js/createMarkup';
 import { addCountryInSelectList } from './js/AllCountry';
-import './js/mainModal';
+import { createModal } from './js/mainModal';
 import './js/ourModal';
 import './js/paginnation';
 import './js/search';
 
 const gallery = document.querySelector('.gallery');
 const form = document.querySelector('form');
-
 addCountryInSelectList();
 async function searcEventandCreateMarcup(data) {
   const events = await fetchEvents(data);
@@ -30,5 +29,11 @@ form.addEventListener('submit', e => {
   }
 });
 
-const itemCard = document.querySelector('.gallery__item');
-itemCard.addEventListener('click', createModal);
+gallery.addEventListener('click', e => {
+  let eventcard = e.target.closest('[data-id]');
+
+  console.log(eventcard.dataset.id);
+  console.log(e.currentTarget);
+  e.preventDefault();
+  // createModal();
+});

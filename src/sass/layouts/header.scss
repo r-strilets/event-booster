@@ -1,6 +1,7 @@
-.header {
+.header-container {
   position: relative;
   height: 364px;
+  background-position: center;
 
   @include mq(desktop) {
     height: 446px;
@@ -25,7 +26,7 @@
   }
   @media screen and (min-width: 768px) {
     background: url('../images/header_1280.jpg');
-
+    max-width: 1280px;
     background-size: cover;
     background-repeat: no-repeat;
 
@@ -41,11 +42,22 @@
 .header-title {
   font-size: 18px;
   font-weight: 900;
-  line-height: 22px;
+  line-height: calc(22 / 18);
   text-align: center;
   color: var(--second-text-color);
   margin-bottom: 24px;
   padding-top: 80px;
+  @include mq(tablet) {
+    font-size: 30px;
+    line-height: calc(37 / 30);
+    margin-bottom: 40px;
+    padding-top: 40px;
+  }
+  @include mq(desktop) {
+    font-size: 50px;
+    line-height: calc(61 / 50);
+    margin-bottom: 48px;
+  }
 }
 .logo {
   display: block;
@@ -78,9 +90,45 @@
   top: 0;
   left: 0;
 }
+.form {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 24px;
+  margin: 0 auto;
+  margin-bottom: 65px;
+
+  @include mq(tablet) {
+    flex-direction: row;
+    gap: 32px;
+    margin-bottom: 90px;
+  }
+  @include mq(desktop) {
+    margin-bottom: 139px;
+  }
+}
+.form-search {
+  position: absolute;
+  top: 12px;
+  left: 246px;
+  z-index: 2;
+  width: 20px;
+  height: 20px;
+  background-color: #0000;
+  background-image: url('../images/search.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  border: none;
+  @include mq(tablet) {
+    left: 300px;
+  }
+  @include mq(desktop) {
+    left: 575px;
+  }
+}
 .form-input,
 .form-select {
-  position: relative;
   width: 280px;
   height: 40px;
   font-size: 16px;
@@ -91,8 +139,17 @@
   backdrop-filter: blur(10px);
   border-radius: 20px;
   padding-left: 15px;
+
+  border: none;
+  &:focus {
+    outline: none;
+  }
 }
-select {
+.form-input::placeholder {
+  color: var(--third-text-color);
+}
+
+.form-select {
   font: inherit;
   letter-spacing: inherit;
   word-spacing: inherit;
@@ -101,12 +158,12 @@ select {
   appearance: none;
 }
 
-select:not([multiple]) {
+.form-select:not([multiple]) {
   padding-right: 1.2em;
   background-repeat: no-repeat;
-  background-position: calc(100% - 0.25em) 0.35em;
+  background-position: calc(100% - 0.8em) 1.1em;
   background-size: 0.85em auto;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'%3E%3Cpath d='M70.3 13.8L40 66.3 9.7 13.8z' fill='%23000'%3E%3C/path%3E%3C/svg%3E");
+  background-image: url('../images/arrow.png');
 }
 
 /* скроет иконку стрелки в IE */

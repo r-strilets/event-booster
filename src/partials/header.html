@@ -1,21 +1,23 @@
 <header class="header">
-  <div class="logo">
-    <a class="logo__link" href="index.html">
-      <svg class="logo__image">
-        <use href="./images/sprite.svg#icon-logo"></use>
-      </svg>
-    </a>
-  </div>
-  <div class="container">
+  <div class="container header-container">
+    <div class="logo">
+      <a class="logo__link" href="index.html">
+        <svg class="logo__image">
+          <use href="./images/sprite.svg#icon-logo"></use>
+        </svg>
+      </a>
+    </div>
+
     <h1 class="header-title">FIND BEST EVENTS<br />AROUND THE WORLD</h1>
-    <form action="submit">
+    <form action="submit" class="form">
+      <button type="submit" class="js-search form-search"></button>
       <input
         type="text"
         placeholder="Start searching"
         name="searchInput"
         class="form-input"
       />
-      <button type="submit" class="js-search">search</button>
+
       <select name="country" class="country form-select">
         <option selected value="default">Choose country</option>
       </select>

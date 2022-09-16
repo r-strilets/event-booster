@@ -1,12 +1,12 @@
 import { EventAPI } from './eventapi';
 
 export async function fetchEvents(data) {
-  const images = await EventAPI.searcEvent(data);
-  let imagesArray;
+  const events = await EventAPI.searcEvent(data);
+  let eventsArray;
   try {
-    imagesArray = images._embedded.events;
+    eventsArray = events._embedded.events;
   } catch (error) {
-    window.alert(`${error.message} Жодного Івенту не знайдено`);
+    window.alert('Жодного Івенту не знайдено');
   }
-  return imagesArray;
+  return eventsArray;
 }

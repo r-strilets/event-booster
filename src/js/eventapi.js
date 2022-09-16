@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { countryCode } from './AllCountry';
 const BASE_URL = 'https://app.ticketmaster.com/discovery/v2/events.json';
 const API_KEY = 'lVBWF1m1jxEC3z9hVtA4qLnJqoOWHAKi';
 

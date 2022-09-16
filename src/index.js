@@ -10,7 +10,7 @@ import './js/search';
 
 const gallery = document.querySelector('.gallery');
 const form = document.querySelector('form');
-
+// Додає країни до випадаючого списку
 addCountryInSelectList();
 async function searcEventandCreateMarcup(data) {
   const events = await fetchEvents(data);
@@ -18,6 +18,9 @@ async function searcEventandCreateMarcup(data) {
     gallery.insertAdjacentHTML('beforeend', createMarkup(events));
   }
 }
+// Попередній рендер карток за запитом 'Music'
+searcEventandCreateMarcup('Music');
+// Пошук та рендер карток за запитом у інпуті
 form.addEventListener('submit', e => {
   e.preventDefault();
   const countryCode = e.currentTarget.country.value;

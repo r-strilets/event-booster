@@ -68,7 +68,7 @@ export function createMarkup(events) {
     </time>
   </p>
   <p class="gallery__location">
-    <svg class="gallery__icon" width="7px" height="10px">
+  <svg class="gallery__icon" width="10px" height="10px">
       <use href="./images/sprite.svg#icon-geolocation"></use>
     </svg>
     ${event._embedded.venues[0].name}

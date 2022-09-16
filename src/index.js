@@ -24,7 +24,7 @@ form.addEventListener('submit', e => {
   if (e.currentTarget.country.value !== 'default') {
     EventAPI.countryCode = countryCode;
   }
-  const query = e.currentTarget.elements[0].value;
+  const query = e.currentTarget.elements.searchInput.value;
   if (query !== '') {
     searcEventandCreateMarcup(query);
   }

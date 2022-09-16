@@ -4,13 +4,13 @@ import { EventAPI } from './js/eventapi';
 import { createMarkup } from './js/createMarkup';
 import './js/mainModal';
 import './js/ourModal';
-import './js/paginnation';
+import { handlerLoadMore } from './js/paginnation';
 import './js/search';
 
 const gallery = document.querySelector('.gallery');
 const input = document.querySelector('input');
 const form = document.querySelector('form');
-
+searcEventandCreateMarcup('US');
 async function searcEventandCreateMarcup(data) {
   const events = await fetchEvents(data);
   console.log(events);
@@ -22,3 +22,4 @@ form.addEventListener('submit', e => {
   const query = e.currentTarget.elements[0].value;
   searcEventandCreateMarcup(query);
 });
+handlerLoadMore();

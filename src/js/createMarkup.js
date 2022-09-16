@@ -30,7 +30,7 @@ export function createMarkup(events) {
   return events
     .map(
       event => `<a href='#' class="gallery__item"> 
-      <picture
+  <picture
         class="gallery__img"
       >
         <source

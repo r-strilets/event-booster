@@ -29,3 +29,6 @@ form.addEventListener('submit', e => {
     searcEventandCreateMarcup(query);
   }
 });
+
+const itemCard = document.querySelector('.gallery__item');
+itemCard.addEventListener('click', createModal);

@@ -1,17 +1,15 @@
-const itemCard = document.querySelector('.gallery__item');
-itemCard.addEventListener('click', createModal);
-
-function createModal() {
-  return arr.reduce(
+export function createModal(response) {
+  return response.reduce(
     (acc, { info, city, country, name, images, dates, url }) =>
       acc +
-      ` <div class="event-card" hidden>
-    <img
-      class="gallery__image"
-      src="${images}"
-
-      loading="lazy" width="300"/>
-
+      ` <div class="event-card">
+     <button type="button" class="close__modal"><svg>
+  <use href="../images/sprite.svg#icon-close"></use>
+</svg></button>
+        <img
+          src=""
+          alt="photo"
+          loading="lazy"
       <div class="info">
         <p class="info-item">
           <b>INFO</b>${info}
@@ -27,13 +25,24 @@ function createModal() {
         <p class="info-item">
           <b>WHO </b>${name}
         </p>
-         <p class="info-item">
+        ${response.prices
+          .map(
+            price => `<p class="info-item">
           <b>PRICES </b>${name}
-          <button><a href= "${url}">BUY TICKETS</a></button>
-        </p>
+          <button><a href= "${price.url}">BUY TICKETS</a></button>
+        </p>`
+          )
+          .join('')}
       </div>
-      <button><a href=" https://www.google.com/${name}">MORE FROM THIS AUTHOR</a></button>
+      <button class="info__button"><a href=" https://www.google.com/${name}">MORE FROM THIS AUTHOR</a></button>
     </div> `,
     ''
   );
 }
+
+// const modalButton = document.querySelector('info__button');
+// modalButton.addEventListener('click', googleSearch);
+
+// function googleSearch(response) {
+//   window.open(`https://www.google.com/search?q=${response.name}`);
+// }

@@ -1,3 +1,26 @@
+.footer-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  line-height: calc(20 / 16);
+  margin-bottom: 40px;
+  color: var(--third-text-color);
+}
+.footer_modal_open {
+  padding: 5px;
+  color: inherit;
+  border: 1px solid var(--accent--color);
+  background-color: #0000;
+  border-radius: 20px 0;
+  box-shadow: 0 0 30px #ff0bef99;
+  &:hover,
+  &:focus {
+    transform: scale(1.1);
+    box-shadow: 0 0 30px #ff0bef;
+    outline: none;
+  }
+}
 .is-hidden {
   visibility: hidden;
 }
@@ -32,6 +55,7 @@
   box-shadow: rgba(0, 0, 0, 0.14);
   box-shadow: rgba(0, 0, 0, 0.12);
   border-radius: 4px;
+  z-index: 100;
 }
 
 .list-developers {

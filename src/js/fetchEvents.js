@@ -1,9 +1,12 @@
-import axios from 'axios';
 import { EventAPI } from './eventapi';
 
 export async function fetchEvents(data) {
   const images = await EventAPI.searcEvent(data);
-  const imagesArray = images[0]._embedded.events;
+  let imagesArray;
+  try {
+    imagesArray = images._embedded.events;
+  } catch (error) {
+    window.alert(`${error.message} Жодного Івенту не знайдено`);
+  }
   return imagesArray;
-  console.log(images[0]._embedded.events);
 }

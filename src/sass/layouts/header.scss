@@ -78,6 +78,9 @@
   top: 0;
   left: 0;
 }
+.form {
+  position: relative;
+}
 .form-input,
 .form-select {
   position: relative;
@@ -104,7 +107,7 @@ select {
 select:not([multiple]) {
   padding-right: 1.2em;
   background-repeat: no-repeat;
-  background-position: calc(100% - 0.25em) 0.35em;
+  background-position: calc(100% - 0.8em) 0.85em;
   background-size: 0.85em auto;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'%3E%3Cpath d='M70.3 13.8L40 66.3 9.7 13.8z' fill='%23000'%3E%3C/path%3E%3C/svg%3E");
 }

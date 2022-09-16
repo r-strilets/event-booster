@@ -15,7 +15,7 @@ addCountryInSelectList();
 async function searcEventandCreateMarcup(data) {
   const events = await fetchEvents(data);
   if (events) {
-    gallery.insertAdjacentHTML('beforeend', createMarkup(events));
+    gallery.innerHTML = createMarkup(events);
   }
 }
 // Попередній рендер карток за запитом 'Music'

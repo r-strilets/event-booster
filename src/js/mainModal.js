@@ -9,9 +9,9 @@ function createModal() {
     <img
       class="gallery__image"
       src="${images}"
-                             
+
       loading="lazy" width="300"/>
-      
+
       <div class="info">
         <p class="info-item">
           <b>INFO</b>${info}

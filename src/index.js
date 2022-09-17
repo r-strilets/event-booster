@@ -4,7 +4,8 @@ import { EventAPI } from './js/eventapi';
 import { createMarkup } from './js/createMarkup';
 import { addCountryInSelectList } from './js/AllCountry';
 import { createModal } from './js/mainModal';
-import { oncreateClick } from './js/paginationNumbers';
+// import { oncreateClick } from './js/paginationNumbers';
+import { createPaginationMarcup } from './js/paginationNumbers';
 import './js/ourModal';
 import './js/paginnation';
 import './js/search';
@@ -14,17 +15,28 @@ import './js/paginationNumbers';
 const gallery = document.querySelector('.gallery');
 const form = document.querySelector('form');
 const mainModal = document.querySelector('#modal');
+
 let events;
+// Додавання країн до випадаючого списку
 addCountryInSelectList();
+// функція для пошуку та створення карток з івентами
 async function searcEventandCreateMarcup(data) {
-  events = await fetchEvents(data);
+  const response = await fetchEvents(data);
+  const events = response.events;
+  const totalPages = response.allData.page.totalPages;
+  const currentPage = response.allData.page.number;
   if (events) {
     gallery.innerHTML = createMarkup(events);
+    createPaginationMarcup(totalPages, currentPage);
   }
 }
-// Попередній рендер карток за запитом 'Music'
-searcEventandCreateMarcup('Music');
-// Пошук та рендер карток за запитом у інпуті
+// Функція для зміни сторінки пошуку за допомогою пагінації
+const paginationList = document.querySelector('.pagination');
+paginationList.addEventListener('click', e => {
+  EventAPI.page = e.target.value;
+  searcEventandCreateMarcup('');
+});
+// Виклик для пошуку та рендеру карток за запитом у інпуті
 form.addEventListener('submit', e => {
   e.preventDefault();
   const countryCode = e.currentTarget.country.value;
@@ -47,9 +59,7 @@ gallery.addEventListener('click', e => {
     console.log(eventsID);
     mainModal.innerHTML = createModal(eventsID);
   }
-
   // console.log(eventcard.dataset.id);
   // console.log(e.currentTarget);
   // createModal();
 });
-searcEventandCreateMarcup();

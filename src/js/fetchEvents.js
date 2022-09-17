@@ -8,7 +8,7 @@ export async function fetchEvents(data) {
     eventsArray = { events: response._embedded.events, allData: response };
   } catch (error) {
     gallery.innerHTML =
-      '<img src="./images/catSearch.svg" alt="Жодного Івенту не знайдено" /><p class="header-title">Our cats did not find anything, please change your request or select another country</p>';
+      '<img src="./images/catSearch.svg" alt="Our cats did not find anything" /><p class="header-title">Our cats did not find anything, please change your request or select another country</p>';
   }
   return eventsArray;
 }

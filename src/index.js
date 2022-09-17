@@ -3,24 +3,36 @@ import { fetchEvents } from './js/fetchEvents';
 import { EventAPI } from './js/eventapi';
 import { createMarkup } from './js/createMarkup';
 import { addCountryInSelectList } from './js/AllCountry';
-import { createModal } from './js/mainModal';
+import './js/mainModal';
 import './js/ourModal';
-import './js/paginnation';
+// import { handlerLoadMore } from './js/paginnation';
+import { start } from './js/paginnation';
 import './js/search';
+export { getSearchString }; 
 
 const gallery = document.querySelector('.gallery');
 const form = document.querySelector('form');
+const search_string = 'US';
+// searcEventandCreateMarcup(search_string);
+
+ function getSearchString()
+{
+  return search_string;
+}
+
+async function setSearchString(string)
+{
+   search_string = string;
+}
 
 addCountryInSelectList();
 async function searcEventandCreateMarcup(data) {
+  setSearchString(data);
   const events = await fetchEvents(data);
   if (events) {
-    gallery.innerHTML = createMarkup(events);
+    gallery.insertAdjacentHTML('beforeend', createMarkup(events));
   }
 }
-// Попередній рендер карток за запитом 'Music'
-searcEventandCreateMarcup('Music');
-// Пошук та рендер карток за запитом у інпуті
 form.addEventListener('submit', e => {
   e.preventDefault();
   const countryCode = e.currentTarget.country.value;
@@ -33,11 +45,5 @@ form.addEventListener('submit', e => {
   }
 });
 
-gallery.addEventListener('click', e => {
-  let eventcard = e.target.closest('[data-id]');
 
-  console.log(eventcard.dataset.id);
-  console.log(e.currentTarget);
-  e.preventDefault();
-  // createModal();
-});
+start();

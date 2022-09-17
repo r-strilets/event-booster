@@ -10,7 +10,6 @@
   
     function toggleModal(e) {
         e.preventDefault();
-        console.log('awdawdawdawd');
       refs.modal.classList.toggle("is-hidden");
     }
   })();

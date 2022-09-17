@@ -4,7 +4,9 @@
   $desktop: 1280px;
   @if $type == mob {
     @media screen and (min-width: $mob) {
-      @content;
+      .pagination{
+        visibility: hidden;
+      }
     }
   }
   @if $type == mob-only {
@@ -14,7 +16,9 @@
   }
   @if $type == tablet {
     @media screen and (min-width: $tablet) {
-      @content;
+      .pagination{
+        visibility: visible;
+      }
     }
   }
   @if $type == tablet-only {

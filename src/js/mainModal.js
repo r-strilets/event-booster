@@ -1,5 +1,5 @@
-const itemCard = document.querySelector('.gallery__item');
-itemCard.addEventListener('click', createModal);
+const itemCard = document.querySelector('.gallery');
+// document.querySelector();
 
 function createModal() {
   return arr.reduce(
@@ -37,3 +37,4 @@ function createModal() {
     ''
   );
 }
+itemCard.addEventListener('click', createModal);

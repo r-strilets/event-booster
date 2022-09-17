@@ -5,15 +5,17 @@ const API_KEY = 'lVBWF1m1jxEC3z9hVtA4qLnJqoOWHAKi';
 
 export class EventAPI {
   static size = 16;
-  static page = 0;
+  static page = 1;
   static countryCode = 'US';
-  static async searcEvent(query) {
-    if (query.trim()) EventAPI.keyword = query;
+  static async searcEvent(query,page =  1) {
+    console.log(page);
+    // please weit 
+    EventAPI.keyword = query;
     const config = {
       params: {
         keyword: query,
         size: EventAPI.size,
-        page: EventAPI.page,
+        page: page,
         countryCode: EventAPI.countryCode,
         apikey: API_KEY,
       },
@@ -24,5 +26,7 @@ export class EventAPI {
     } catch (error) {
       console.log(error.message);
     }
+
+    // dont'work 
   }
 }

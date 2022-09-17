@@ -1,6 +1,6 @@
 export function createMarkup(events) {
-  return events
-    .map(
+
+  return events.map(
       event => `<div class="gallery__item">  
   <picture
         class="gallery__img"
@@ -46,6 +46,7 @@ export function createMarkup(events) {
     )
     .join('');
 }
+
 {
   /* <img src="${event.images[0].url}" alt="event.name" class="gallery__img" />; */
 }

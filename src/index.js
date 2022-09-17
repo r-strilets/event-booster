@@ -5,14 +5,29 @@ import { createMarkup } from './js/createMarkup';
 import { addCountryInSelectList } from './js/AllCountry';
 import './js/mainModal';
 import './js/ourModal';
-import './js/paginnation';
+// import { handlerLoadMore } from './js/paginnation';
+import { start } from './js/paginnation';
 import './js/search';
+export { getSearchString }; 
 
 const gallery = document.querySelector('.gallery');
 const form = document.querySelector('form');
+const search_string = 'US';
+// searcEventandCreateMarcup(search_string);
+
+ function getSearchString()
+{
+  return search_string;
+}
+
+async function setSearchString(string)
+{
+   search_string = string;
+}
 
 addCountryInSelectList();
 async function searcEventandCreateMarcup(data) {
+  setSearchString(data);
   const events = await fetchEvents(data);
   if (events) {
     gallery.insertAdjacentHTML('beforeend', createMarkup(events));
@@ -29,3 +44,6 @@ form.addEventListener('submit', e => {
     searcEventandCreateMarcup(query);
   }
 });
+
+
+start();

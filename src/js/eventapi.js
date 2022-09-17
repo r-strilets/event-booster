@@ -6,11 +6,12 @@ export class EventAPI {
   static size = 16;
   static page = 0;
   static countryCode = '';
+  static keyword = '';
   static async searcEvent(query) {
     if (query.trim()) EventAPI.keyword = query;
     const config = {
       params: {
-        keyword: query,
+        keyword: EventAPI.keyword,
         size: EventAPI.size,
         page: EventAPI.page,
         countryCode: EventAPI.countryCode,

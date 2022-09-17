@@ -65,18 +65,18 @@ export function createMarkup(events) {
     </time>
   </p>
   <a href='https://www.google.com/search?q=${
-    event._embedded.venues[0].name
+    event?._embedded?.venues[0].name
   }&oq=${
-        event._embedded.venues[0].name
+        event?._embedded?.venues[0].name
       }k&aqs=chrome..69i57j0i512l2j0i22i30l7.661j0j7&sourceid=chrome&ie=UTF-8'class="gallery__location"
   class='gallery__location'
   target="_blank"
   rel="noopener noreferrer nofollow"
   title="find location in google">
  <svg class="gallery__icon" width="10px" height="10px">
-      <use href="./images/sprite.svg#icon-geolocation"></use>
+      <use href="/sprite.f14d31f7.svg#icon-geolocation"></use>
     </svg>
-    ${event._embedded.venues[0].name}</a>
+    ${event?._embedded?.venues[0].name}</a>
 </li>
 `
     )

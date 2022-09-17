@@ -1,13 +1,14 @@
 import { EventAPI } from './eventapi';
+const gallery = document.querySelector('.gallery');
 
 export async function fetchEvents(data) {
-  const events = await EventAPI.searcEvent(data);
+  const response = await EventAPI.searcEvent(data);
   let eventsArray;
   try {
-    console.log(events);
-    eventsArray = events._embedded.events;
+    eventsArray = { events: response._embedded.events, allData: response };
   } catch (error) {
-    window.alert('Жодного Івенту не знайдено');
+    gallery.innerHTML =
+      '<img src="./images/catSearch.svg" alt="Жодного Івенту не знайдено" /><p class="header-title">Our cats did not find anything, please change your request or select another country</p>';
   }
   return eventsArray;
 }

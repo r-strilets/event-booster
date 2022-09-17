@@ -27,7 +27,10 @@ export async function handlerLoadMore(entries = '') {
         page += 1;
         try {
             list.insertAdjacentHTML('beforeend', createMarkup(resp._embedded.events));
-            observer.observe(guard);
+            setTimeout(() => {
+                observer.observe(guard);
+            }, 2000);
+           
         } catch {}
     }
    }

@@ -12,7 +12,7 @@ export { getSearchString };
 
 const gallery = document.querySelector('.gallery');
 const form = document.querySelector('form');
-const search_string = 'US';
+let search_string = 'US';
 // searcEventandCreateMarcup(search_string);
 
  function getSearchString()

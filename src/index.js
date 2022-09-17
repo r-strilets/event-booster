@@ -16,6 +16,8 @@ const gallery = document.querySelector('.gallery');
 const form = document.querySelector('form');
 const mainModal = document.querySelector('#modal');
 
+// перший віклик функції
+searcEventandCreateMarcup('music');
 let events;
 // Додавання країн до випадаючого списку
 addCountryInSelectList();

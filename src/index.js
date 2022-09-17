@@ -4,15 +4,18 @@ import { EventAPI } from './js/eventapi';
 import { createMarkup } from './js/createMarkup';
 import { addCountryInSelectList } from './js/AllCountry';
 import { createModal } from './js/mainModal';
+import { oncreateClick } from './js/paginationNumbers';
 import './js/ourModal';
 import './js/paginnation';
 import './js/search';
+import './js/search';
+import './js/paginationNumbers';
 
 const gallery = document.querySelector('.gallery');
 const form = document.querySelector('form');
 
 addCountryInSelectList();
-async function searcEventandCreateMarcup(data) {
+export async function searcEventandCreateMarcup(data) {
   const events = await fetchEvents(data);
   if (events) {
     gallery.innerHTML = createMarkup(events);
@@ -41,3 +44,4 @@ gallery.addEventListener('click', e => {
   e.preventDefault();
   // createModal();
 });
+searcEventandCreateMarcup();

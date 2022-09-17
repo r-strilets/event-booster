@@ -7,7 +7,7 @@ import { createModal } from './js/mainModal';
 // import { oncreateClick } from './js/paginationNumbers';
 import { createPaginationMarcup } from './js/paginationNumbers';
 import './js/ourModal';
-import './js/paginnation';
+
 import './js/search';
 import './js/search';
 import './js/paginationNumbers';

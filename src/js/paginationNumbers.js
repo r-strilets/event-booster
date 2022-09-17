@@ -17,10 +17,10 @@ async function getData(data) {
 }
 
 async function main() {
-  const postsData = await getData('music');
+  const postsData = await getData('');
 
   const rows = 16;
-  const totalPages = postsData.page.totalPages;
+  const totalPages = postsData.page.totalPages - 100;
   let currentPage = postsData.page.number;
 
   let elemLi = '';

@@ -9,7 +9,7 @@ const list = document.querySelector('.gallery');
 
 const options = {
   root: null,
-  rootMargin: '500px',
+  rootMargin: '300px',
   treshold: 1,
 };
 const observer = new IntersectionObserver(handlerLoadMore, options);

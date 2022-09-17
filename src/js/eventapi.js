@@ -5,7 +5,7 @@ const API_KEY = 'lVBWF1m1jxEC3z9hVtA4qLnJqoOWHAKi';
 export class EventAPI {
   static size = 16;
   static page = 0;
-  static countryCode = 'US';
+  static countryCode = '';
   static async searcEvent(query) {
     if (query.trim()) EventAPI.keyword = query;
     const config = {

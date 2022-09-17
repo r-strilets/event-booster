@@ -13,10 +13,11 @@ import './js/paginationNumbers';
 
 const gallery = document.querySelector('.gallery');
 const form = document.querySelector('form');
-
+const mainModal = document.querySelector('#modal');
+let events;
 addCountryInSelectList();
-export async function searcEventandCreateMarcup(data) {
-  const events = await fetchEvents(data);
+async function searcEventandCreateMarcup(data) {
+  events = await fetchEvents(data);
   if (events) {
     gallery.innerHTML = createMarkup(events);
   }
@@ -37,11 +38,18 @@ form.addEventListener('submit', e => {
 });
 
 gallery.addEventListener('click', e => {
-  let eventcard = e.target.closest('[data-id]');
-
-  console.log(eventcard.dataset.id);
-  console.log(e.currentTarget);
   e.preventDefault();
+  // let eventcard = e.target.closest('[data-id]');
+  const eventCardID = e.target.closest('.gallery__item').id;
+  const eventsID = events.filter(event => event.id === eventCardID);
+  if (events) {
+    console.log(eventCardID);
+    console.log(eventsID);
+    mainModal.innerHTML = createModal(eventsID);
+  }
+
+  // console.log(eventcard.dataset.id);
+  // console.log(e.currentTarget);
   // createModal();
 });
 searcEventandCreateMarcup();

@@ -58,6 +58,7 @@
   border-radius: 50px 0;
   width: 120px;
   height: 151px;
+  object-fit: cover;
 
   @include mq(tablet) {
     width: 141px;

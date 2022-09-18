@@ -1,13 +1,31 @@
 <header class="header">
+  <div class="logo">
+    <a class="logo__link" href="index.html">
+      <picture>
+        <source
+          srcset="
+            ./images/logo/logo1280.png    1x,
+            ./images/logo/logo1280@2x.png 2x
+          "
+          media="(min-width:1280px)"
+        />
+        <source
+          srcset="./images/logo/logo768.png 1x, ./images/logo/logo768@2x.png 2x"
+          media="(min-width:768px)"
+        />
+        <source
+          srcset="./images/logo/logo320.png 1x, ./images/logo/logo320.png 2x"
+          media="(max-width:768px)"
+        />
+        <img
+          src="./images/logo/logo320.png"
+          alt="photo_of_member_1"
+          class="logo__image"
+        />
+      </picture>
+    </a>
+  </div>
   <div class="container header-container">
-    <div class="logo">
-      <a class="logo__link" href="index.html">
-        <svg class="logo__image">
-          <use href="./images/sprite.svg#icon-logo"></use>
-        </svg>
-      </a>
-    </div>
-
     <h1 class="header-title">FIND BEST EVENTS<br />AROUND THE WORLD</h1>
     <form action="submit" class="form">
       <div class="form-thumb">

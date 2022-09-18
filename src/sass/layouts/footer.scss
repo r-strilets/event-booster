@@ -5,6 +5,7 @@
   flex-wrap: wrap;
   font-size: 13px;
   line-height: calc(17 / 14);
+  text-align: center;
   margin-bottom: 40px;
   color: var(--third-text-color);
   @include mq(tablet) {
@@ -25,6 +26,10 @@
     transform: scale(1.1);
     box-shadow: 0 0 30px #ff0bef;
     outline: none;
+  }
+  @include mq(desktop) {
+    margin-top: 0;
+    margin-left: 15px;
   }
 }
 .is-hidden {

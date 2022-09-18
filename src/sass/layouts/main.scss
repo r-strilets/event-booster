@@ -3,10 +3,13 @@
 // }
 .gallery {
   position: relative;
-  top: -50px;
+  top: 10px;
   display: flex;
   flex-wrap: wrap;
   gap: 30px;
+  @include mq(tablet) {
+    top: -40px;
+  }
 }
 .gallery__item {
   position: relative;
@@ -112,18 +115,10 @@
     border-radius: 10px 0;
   }
 }
-// .btn-up {
-//   display: none;
-// }
 
-// .show .btn-up {
-//   display: block;
-// }
 .arrow {
   opacity: 0;
   background-color: transparent;
-
-  // border-radius: 5px;
   position: fixed;
   right: 3px;
   bottom: 20px;
@@ -151,5 +146,9 @@
   @include mq(desktop) {
     width: 65px;
     height: 65px;
+  }
+  .pagination__btn--current {
+    font-size: 20px;
+    color: var(--accent--color);
   }
 }

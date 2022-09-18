@@ -31,7 +31,7 @@ async function searcEventandCreateMarcup(data) {
     gallery.innerHTML = createMarkup(events);
     createPaginationMarcup(totalPages, currentPage);
     const currentBTN = document.querySelector(`button[value='${currentPage}']`);
-    console.log(currentBTN);
+    // console.log(currentBTN);
     currentBTN.classList.add('pagination__btn--current');
   }
 }
@@ -60,7 +60,7 @@ gallery.addEventListener('click', e => {
   e.preventDefault();
   // let eventcard = e.target.closest('[data-id]');
   const eventCardID = e.target.closest('.gallery__item').id;
-  console.log(events);
+
   const eventsID = events.filter(event => event.id === eventCardID);
   if (events) {
     mainModal.innerHTML = createModal(eventsID);
@@ -69,7 +69,7 @@ gallery.addEventListener('click', e => {
   modalButton.addEventListener('click', googleSearch);
 
   function googleSearch(resp) {
-    console.dir(eventsID[0]);
+    // console.dir(eventsID[0]);
     window.open(`https://www.google.com/search?q=${eventsID[0].name}`);
   }
   // console.log(eventcard.dataset.id);

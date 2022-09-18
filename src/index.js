@@ -9,7 +9,7 @@ import { createPaginationMarcup } from './js/paginationNumbers';
 import './js/ourModal';
 
 import './js/search';
-import './js/search';
+import './js/button';
 import './js/paginationNumbers';
 
 const gallery = document.querySelector('.gallery');

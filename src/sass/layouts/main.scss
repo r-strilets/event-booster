@@ -115,3 +115,7 @@
     border-radius: 10px 0;
   }
 }
+.pagination__btn--current {
+  font-size: 20px;
+  color: var(--accent--color);
+}

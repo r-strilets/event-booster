@@ -3,10 +3,13 @@
 // }
 .gallery {
   position: relative;
-  top: -50px;
+  top: 10px;
   display: flex;
   flex-wrap: wrap;
   gap: 30px;
+  @include mq(tablet) {
+    top: -40px;
+  }
 }
 .gallery__item {
   position: relative;

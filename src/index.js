@@ -30,6 +30,9 @@ async function searcEventandCreateMarcup(data) {
   if (events) {
     gallery.innerHTML = createMarkup(events);
     createPaginationMarcup(totalPages, currentPage);
+    const currentBTN = document.querySelector(`button[value='${currentPage}']`);
+    console.log(currentBTN);
+    currentBTN.classList.add('pagination__btn--current');
   }
 }
 // Функція для зміни сторінки пошуку за допомогою пагінації

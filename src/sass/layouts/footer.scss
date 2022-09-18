@@ -97,11 +97,11 @@
 
 .close-svg {
   position: absolute;
-  background-color: #fff;
+  // background-color: #fff;
   border-radius: 50%;
   right: 10px;
   top: 10px;
-  fill: var(--info-text-color);
+  fill: #fff;
 }
 
 .title-footer_modal {

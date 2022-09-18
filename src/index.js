@@ -44,8 +44,10 @@ paginationList.addEventListener('click', e => {
 // Виклик для пошуку та рендеру карток за запитом у інпуті
 form.addEventListener('submit', e => {
   e.preventDefault();
+  EventAPI.page = 0;
   const countryCode = e.currentTarget.country.value;
   if (e.currentTarget.country.value !== 'default') {
+    // EventAPI.page = e.target.value;
     EventAPI.countryCode = countryCode;
   }
   const query = e.currentTarget.elements.searchInput.value;

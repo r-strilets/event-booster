@@ -1,9 +1,6 @@
 .header {
   position: relative;
   height: 364px;
-  // max-width: 1280px;
-  // margin: 0 auto;
-  // background-position: center;
 
   @include mq(desktop) {
     height: 446px;
@@ -90,12 +87,14 @@
   border-radius: 50%;
 }
 .logo__link {
-  width: 70px;
-  height: 50px;
   display: inline-block;
   position: relative;
   bottom: -135px;
   right: -125px;
+  @include mq(tablet) {
+    bottom: -175px;
+    right: -205px;
+  }
   @include mq(desktop) {
     bottom: -225px;
     right: -215px;

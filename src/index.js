@@ -6,9 +6,7 @@ import { addCountryInSelectList } from './js/AllCountry';
 import { createModal } from './js/mainModal';
 // import { oncreateClick } from './js/paginationNumbers';
 import { createPaginationMarcup } from './js/paginationNumbers';
-import './js/ourModal';
 
-import './js/search';
 import './js/search';
 import './js/paginationNumbers';
 
@@ -19,6 +17,7 @@ const mainModal = document.querySelector('#modal');
 // перший віклик функції
 searcEventandCreateMarcup('music');
 let events;
+
 // Додавання країн до випадаючого списку
 addCountryInSelectList();
 // функція для пошуку та створення карток з івентами

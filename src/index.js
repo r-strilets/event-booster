@@ -4,11 +4,12 @@ import { EventAPI } from './js/eventapi';
 import { createMarkup } from './js/createMarkup';
 import { addCountryInSelectList } from './js/AllCountry';
 import { createModal } from './js/mainModal';
-// import { oncreateClick } from './js/paginationNumbers';
-import { createPaginationMarcup } from './js/paginationNumbers';
+import './js/button';
 
+import { createPaginationMarcup } from './js/paginationNumbers';
 import './js/search';
 import './js/paginationNumbers';
+import './js/ourModal';
 
 const gallery = document.querySelector('.gallery');
 const form = document.querySelector('form');

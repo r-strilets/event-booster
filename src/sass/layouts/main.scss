@@ -112,3 +112,44 @@
     border-radius: 10px 0;
   }
 }
+// .btn-up {
+//   display: none;
+// }
+
+// .show .btn-up {
+//   display: block;
+// }
+.arrow {
+  opacity: 0;
+  background-color: transparent;
+
+  // border-radius: 5px;
+  position: fixed;
+  right: 3px;
+  bottom: 20px;
+  border: 2px solid var(--accent--color);
+  border-radius: 50%;
+
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+
+  @include mq(desktop) {
+    right: 8px;
+    bottom: 40px;
+  }
+}
+.arrow__icon {
+  display: block;
+  width: 30px;
+  height: 30px;
+  fill: var(--accent--color);
+  @include mq(tablet) {
+    width: 50px;
+    height: 50px;
+  }
+
+  @include mq(desktop) {
+    width: 65px;
+    height: 65px;
+  }
+}

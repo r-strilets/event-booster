@@ -67,7 +67,7 @@
   box-shadow: rgba(0, 0, 0, 0.2);
   box-shadow: rgba(0, 0, 0, 0.14);
   box-shadow: rgba(0, 0, 0, 0.12);
-  border-radius: 20px;
+  border-radius: 50px 0;
   z-index: 100;
   @include mq(tablet) {
     min-width: 50%;

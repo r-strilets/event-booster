@@ -31,7 +31,7 @@ async function searcEventandCreateMarcup(data) {
     gallery.innerHTML = createMarkup(events);
     createPaginationMarcup(totalPages, currentPage);
     const currentBTN = document.querySelector(`button[value='${currentPage}']`);
-    console.log(currentBTN);
+    // console.log(currentBTN);
     currentBTN.classList.add('pagination__btn--current');
   }
 }
@@ -44,8 +44,10 @@ paginationList.addEventListener('click', e => {
 // Виклик для пошуку та рендеру карток за запитом у інпуті
 form.addEventListener('submit', e => {
   e.preventDefault();
+  EventAPI.page = 0;
   const countryCode = e.currentTarget.country.value;
   if (e.currentTarget.country.value !== 'default') {
+    // EventAPI.page = e.target.value;
     EventAPI.countryCode = countryCode;
   }
   const query = e.currentTarget.elements.searchInput.value;
@@ -58,7 +60,7 @@ gallery.addEventListener('click', e => {
   e.preventDefault();
   // let eventcard = e.target.closest('[data-id]');
   const eventCardID = e.target.closest('.gallery__item').id;
-  console.log(events);
+
   const eventsID = events.filter(event => event.id === eventCardID);
   if (events) {
     mainModal.innerHTML = createModal(eventsID);
@@ -67,7 +69,7 @@ gallery.addEventListener('click', e => {
   modalButton.addEventListener('click', googleSearch);
 
   function googleSearch(resp) {
-    console.dir(eventsID[0]);
+    // console.dir(eventsID[0]);
     window.open(`https://www.google.com/search?q=${eventsID[0].name}`);
   }
   // console.log(eventcard.dataset.id);

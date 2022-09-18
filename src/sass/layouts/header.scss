@@ -102,8 +102,9 @@
 }
 
 .logo__image {
-  // width: 70px;
-  // height: 50px;
+  @media screen and (max-width: 767px) {
+    width: 60px;
+  }
 }
 .form {
   position: relative;

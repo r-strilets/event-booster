@@ -1,7 +1,7 @@
 const paginationIteam = document.querySelector('.pagination');
 let maxPage;
 export function createPaginationMarcup(totalPages, currentPage) {
-  let elemLi;
+  let elemLi = '';
   if (totalPages > 50) {
     maxPage = 50;
   } else {

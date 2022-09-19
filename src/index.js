@@ -15,7 +15,12 @@ import './js/paginationNumbers';
 const gallery = document.querySelector('.gallery');
 const form = document.querySelector('form');
 const mainModal = document.querySelector('.createInfo');
+
+const openMainModal = document.querySelector('.modal-backdrop');
+const closeMainModal = document.querySelector('.close__modal');
+
 const paginationIteam = document.querySelector('.pagination');
+
 
 // перший віклик функції
 searcEventandCreateMarcup('music');
@@ -68,15 +73,43 @@ gallery.addEventListener('click', e => {
 
   const eventsID = events.filter(event => event.id === eventCardID);
   if (events) {
+    openMainModal.removeAttribute('hidden');
     mainModal.innerHTML = createModal(eventsID);
+    // console.log(resp.images);
+    const bodyForBcdrop = document.querySelector('body');
+    bodyForBcdrop.classList.add('no-scroll');
+
+    openMainModal.addEventListener('click', onBackdropClick);
+    function onBackdropClick(e) {
+      e.preventDefault();
+      if (e.target === e.currentTarget) {
+        console.dir(e);
+        bodyForBcdrop.classList.remove('no-scroll');
+        openMainModal.setAttribute('hidden', 'true');
+      }
+    }
+    closeMainModal.addEventListener('click', e => {
+      e.preventDefault(), openMainModal.setAttribute('hidden', 'true');
+      bodyForBcdrop.classList.remove('no-scroll');
+    });
   }
+  console.dir(eventsID);
   const modalButton = document.querySelector('.info__button');
   modalButton.addEventListener('click', googleSearch);
 
   function googleSearch(resp) {
-    // console.dir(eventsID[0]);
     window.open(`https://www.google.com/search?q=${eventsID[0].name}`);
   }
+
+  if (eventsID[0].priceRanges) {
+    const btnToBuy = document.querySelector('.buy__button');
+    btnToBuy.addEventListener('click', infoSearch);
+    function infoSearch(resp) {
+      console.dir(eventsID);
+      window.open(`${eventsID[0].url}`);
+    }
+  }
+
   // console.log(eventcard.dataset.id);
   // console.log(e.currentTarget);
   // createModal();

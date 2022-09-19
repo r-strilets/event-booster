@@ -1,0 +1,26 @@
+.button {
+  min-width: 250px;
+  max-height: 50px;
+  width: 250px;
+  font-size: 20px;
+  line-height: 20px;
+  color: var(--primary-text-color);
+  background-color: transparent;
+  border: none;
+
+  padding: 15px 0;
+  text-align: center;
+  &:hover,
+  &:focus {
+    border-radius: 10px 0;
+    color: var(--accent--color);
+    border: 1px solid var(--accent--color);
+    box-shadow: 0 0 30px #ff0bef;
+    outline: none;
+  }
+}
+.bad--request {
+  display: flex;
+  align-items: center;
+  margin: auto;
+}

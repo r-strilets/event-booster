@@ -1,81 +1,95 @@
 import './js/createMarkup';
-import { fetchEvents } from './js/fetchEvents';
 import { EventAPI } from './js/eventapi';
-import { createMarkup } from './js/createMarkup';
 import { addCountryInSelectList } from './js/AllCountry';
 import { createModal } from './js/mainModal';
-// import { oncreateClick } from './js/paginationNumbers';
-import { createPaginationMarcup } from './js/paginationNumbers';
+import { countryCodes } from './js/AllCountry';
+import badRequestImg from './images/catSearch.svg';
 import './js/ourModal';
-
-import './js/search';
 import './js/button';
 import './js/paginationNumbers';
+import { fetchEvents } from './js/fetchEvents';
+import { createMarkup } from './js/createMarkup';
+import { createPaginationMarcup } from './js/paginationNumbers';
+import _debounce from 'debounce';
 
+const paginationIteam = document.querySelector('.pagination');
 const gallery = document.querySelector('.gallery');
-const form = document.querySelector('form');
 const mainModal = document.querySelector('.createInfo');
-
+const form = document.querySelector('form');
+const formCountryInput = document.querySelector('#myCountry');
 const openMainModal = document.querySelector('.modal-backdrop');
 const closeMainModal = document.querySelector('.close__modal');
 
-const paginationIteam = document.querySelector('.pagination');
+// відслідковування пошукового інпуту
+const searchInput = document.querySelector('.form-input');
+let inputValue;
+searchInput.addEventListener('input', e => {
+  inputValue = e.target.value;
+});
 
-
-// перший віклик функції
-searcEventandCreateMarcup('music');
 let events;
-// Додавання країн до випадаючого списку
-addCountryInSelectList();
-// функція для пошуку та створення карток з івентами
 async function searcEventandCreateMarcup(data) {
   const response = await fetchEvents(data);
-  paginationIteam.innerHTML = '';
   if (response) {
     events = response.events;
     const totalPages = response.allData.page.totalPages;
     const currentPage = response.allData.page.number;
-    if (events) {
-      gallery.innerHTML = createMarkup(events);
-      createPaginationMarcup(totalPages, currentPage);
-      const currentBTN = document.querySelector(
-        `button[value='${currentPage}']`
-      );
+    paginationIteam.innerHTML = '';
+    gallery.innerHTML = createMarkup(events);
+    createPaginationMarcup(totalPages, currentPage);
+    const currentBTN = document.querySelector(`button[value='${currentPage}']`);
+    try {
       currentBTN.classList.add('pagination__btn--current');
-    }
+    } catch (error) {}
   }
+  formCountryInput.value = '';
 }
+// перший виклик функції
+searcEventandCreateMarcup('');
+// Додавання країн до випадаючого списку
+addCountryInSelectList();
 // Функція для зміни сторінки пошуку за допомогою пагінації
 const paginationList = document.querySelector('.pagination');
 paginationList.addEventListener('click', e => {
-  EventAPI.page = e.target.value;
-  searcEventandCreateMarcup('');
+  if (e.target.type === 'button') {
+    EventAPI.page = e.target.value;
+    searcEventandCreateMarcup(inputValue);
+  }
 });
+
 // Виклик для пошуку та рендеру карток за запитом у інпуті
 form.addEventListener('submit', e => {
   e.preventDefault();
   EventAPI.page = 0;
-  const countryCode = e.currentTarget.country.value;
-  if (e.currentTarget.country.value !== 'default') {
-    // EventAPI.page = e.target.value;
-    EventAPI.countryCode = countryCode;
-  }
-  const query = e.currentTarget.elements.searchInput.value;
-  if (query !== '') {
-    searcEventandCreateMarcup(query);
-  }
+  searcEventandCreateMarcup(inputValue);
 });
+// Оновлення сторінки за країною
+function refreshCountry(e) {
+  const country = countryCodes.filter(
+    request => request.name.toLowerCase() === e.target.value.toLowerCase()
+  );
+  try {
+    if (e.target.value) {
+      const countryCode = country[0].code;
+      EventAPI.countryCode = countryCode;
+    } else if (!e.target.value) {
+      EventAPI.countryCode = '';
+    }
+    searcEventandCreateMarcup(inputValue);
+  } catch (error) {
+    paginationIteam.innerHTML = '';
+    gallery.innerHTML = `<p class="header-title">Our cats did not find anything, please change your request or select another country</p><div class="bad--request"><img src="${badRequestImg}}" alt="Our cats did not find anything" width ="400px"/><a class="button" href="index.html">RETURN TO HOME</a></div>`;
+  }
+}
+formCountryInput.addEventListener('input', _debounce(refreshCountry, 1000));
 
 gallery.addEventListener('click', e => {
   e.preventDefault();
-  // let eventcard = e.target.closest('[data-id]');
   const eventCardID = e.target.closest('.gallery__item').id;
-
   const eventsID = events.filter(event => event.id === eventCardID);
   if (events) {
     openMainModal.removeAttribute('hidden');
     mainModal.innerHTML = createModal(eventsID);
-    // console.log(resp.images);
     const bodyForBcdrop = document.querySelector('body');
     bodyForBcdrop.classList.add('no-scroll');
 
@@ -83,7 +97,6 @@ gallery.addEventListener('click', e => {
     function onBackdropClick(e) {
       e.preventDefault();
       if (e.target === e.currentTarget) {
-        console.dir(e);
         bodyForBcdrop.classList.remove('no-scroll');
         openMainModal.setAttribute('hidden', 'true');
       }
@@ -93,24 +106,10 @@ gallery.addEventListener('click', e => {
       bodyForBcdrop.classList.remove('no-scroll');
     });
   }
-  console.dir(eventsID);
   const modalButton = document.querySelector('.info__button');
   modalButton.addEventListener('click', googleSearch);
 
   function googleSearch(resp) {
     window.open(`https://www.google.com/search?q=${eventsID[0].name}`);
   }
-
-  if (eventsID[0].priceRanges) {
-    const btnToBuy = document.querySelector('.buy__button');
-    btnToBuy.addEventListener('click', infoSearch);
-    function infoSearch(resp) {
-      console.dir(eventsID);
-      window.open(`${eventsID[0].url}`);
-    }
-  }
-
-  // console.log(eventcard.dataset.id);
-  // console.log(e.currentTarget);
-  // createModal();
 });

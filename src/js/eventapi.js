@@ -8,7 +8,7 @@ export class EventAPI {
   static countryCode = '';
   static keyword = '';
   static async searcEvent(query) {
-    if (query.trim()) EventAPI.keyword = query;
+    EventAPI.keyword = query;
     const config = {
       params: {
         keyword: EventAPI.keyword,

@@ -37,9 +37,17 @@
           class="form-input"
         />
       </div>
-      <select name="country" class="country form-select">
+      <!-- <select name="country" class="country form-select">
         <option selected value="default">Choose country</option>
-      </select>
+      </select> -->
+      <input
+        list="country"
+        id="myCountry"
+        name="myCountry"
+        class="country form-select"
+        placeholder="Choose a country:"
+      />
+      <datalist id="country"></datalist>
     </form>
   </div>
 </header>

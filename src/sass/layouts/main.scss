@@ -8,8 +8,12 @@
   display: flex;
   flex-wrap: wrap;
   gap: 30px;
+  justify-content: center;
   @include mq(tablet) {
     top: -40px;
+  }
+  @include mq(desktop) {
+    gap: 40px;
   }
 }
 
@@ -27,7 +31,7 @@
     width: calc((100% - 129px) / 4);
   }
   @include mq(desktop) {
-    width: calc((100% - 159px) / 4);
+    width: calc((100% - 160px) / 4);
     margin-bottom: 40px;
   }
   &:hover,

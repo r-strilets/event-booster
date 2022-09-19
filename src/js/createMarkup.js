@@ -74,7 +74,7 @@ export function createMarkup(events) {
   rel="noopener noreferrer nofollow"
   title="find location in google">
  <svg class="gallery__icon" width="10px" height="10px">
-      <use href="/sprite.f14d31f7.svg#icon-geolocation"></use>
+      <use href="./images/sprite.svg#icon-geolocation"></use>
     </svg>
     ${event?._embedded?.venues[0].name}</a>
 </li>

@@ -15,8 +15,12 @@ import './js/paginationNumbers';
 const gallery = document.querySelector('.gallery');
 const form = document.querySelector('form');
 const mainModal = document.querySelector('.createInfo');
+
 const openMainModal = document.querySelector('.modal-backdrop');
 const closeMainModal = document.querySelector('.close__modal');
+
+const paginationIteam = document.querySelector('.pagination');
+
 
 // перший віклик функції
 searcEventandCreateMarcup('music');
@@ -26,15 +30,19 @@ addCountryInSelectList();
 // функція для пошуку та створення карток з івентами
 async function searcEventandCreateMarcup(data) {
   const response = await fetchEvents(data);
-  events = response.events;
-  const totalPages = response.allData.page.totalPages;
-  const currentPage = response.allData.page.number;
-  if (events) {
-    gallery.innerHTML = createMarkup(events);
-    createPaginationMarcup(totalPages, currentPage);
-    const currentBTN = document.querySelector(`button[value='${currentPage}']`);
-    // console.log(currentBTN);
-    currentBTN.classList.add('pagination__btn--current');
+  paginationIteam.innerHTML = '';
+  if (response) {
+    events = response.events;
+    const totalPages = response.allData.page.totalPages;
+    const currentPage = response.allData.page.number;
+    if (events) {
+      gallery.innerHTML = createMarkup(events);
+      createPaginationMarcup(totalPages, currentPage);
+      const currentBTN = document.querySelector(
+        `button[value='${currentPage}']`
+      );
+      currentBTN.classList.add('pagination__btn--current');
+    }
   }
 }
 // Функція для зміни сторінки пошуку за допомогою пагінації

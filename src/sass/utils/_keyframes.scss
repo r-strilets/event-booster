@@ -1,0 +1,43 @@
+@keyframes animate125 {
+  0% {
+    transform: scale(0.6);
+  }
+
+  50% {
+    transform: scale(1.25);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes boxShadow {
+  0% {
+    text-shadow: 0px -5px 4px rgb(220 86 197 / 15%),
+      0 5px 4px rgb(220 86 197 / 15%), 5px 0px 4px rgb(220 86 197 / 15%),
+      -5px 0px 4px rgb(220 86 197 / 15%);
+  }
+  25% {
+    text-shadow: 0px -5px 4px rgb(220 86 197 / 25%),
+      0 5px 4px rgb(220 86 197 / 25%), 5px 0px 4px rgb(220 86 197 / 25%),
+      -5px 0px 4px rgb(220 86 197 / 25%);
+  }
+
+  50% {
+    text-shadow: 0px -5px 4px rgb(220 86 197 / 50%),
+      0 5px 4px rgb(220 86 197 / 50%), 5px 0px 4px rgb(220 86 197 / 50%),
+      -5px 0px 4px rgb(220 86 197 / 50%);
+  }
+
+  75% {
+    text-shadow: 0px -5px 4px rgb(220 86 197 / 25%),
+      0 5px 4px rgb(220 86 197 / 25%), 5px 0px 4px rgb(220 86 197 / 25%),
+      -5px 0px 4px rgb(220 86 197 / 25%);
+  }
+
+  100% {
+    text-shadow: 0px -5px 4px rgb(220 86 197 / 15%),
+      0 5px 4px rgb(220 86 197 / 15%), 5px 0px 4px rgb(220 86 197 / 15%),
+      -5px 0px 4px rgb(220 86 197 / 15%);
+  }
+}

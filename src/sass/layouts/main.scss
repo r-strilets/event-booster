@@ -1,6 +1,6 @@
-// .main {
-//   position: relative;
-// }
+.main {
+  min-height: 400px;
+}
 .gallery {
   position: relative;
   top: 10px;
@@ -11,6 +11,7 @@
     top: -40px;
   }
 }
+
 .gallery__item {
   position: relative;
   display: flex;
@@ -19,6 +20,8 @@
   text-align: center;
   margin-bottom: 32px;
   width: calc((100% - 30px) / 2);
+  animation: animate125 750ms;
+
   @include mq(tablet) {
     width: calc((100% - 129px) / 4);
   }
@@ -34,6 +37,7 @@
     outline: none;
   }
 }
+
 .gallery__item::before {
   content: '';
   position: absolute;

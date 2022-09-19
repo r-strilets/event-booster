@@ -49,6 +49,7 @@
   color: var(--second-text-color);
   margin-bottom: 24px;
   padding-top: 80px;
+  animation: boxShadow 3000ms infinite 1000ms;
   @include mq(tablet) {
     font-size: 30px;
     line-height: calc(37 / 30);

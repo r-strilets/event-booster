@@ -78,9 +78,14 @@
 }
 
 .list-developers {
+  // display: flex;
+  // flex-direction: row;
+  // flex-wrap: wrap;
+  flex-flow: wrap;
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  gap: 10px;
+
+  justify-content: center;
 
   @include mq(tablet) {
     flex-direction: row;
@@ -128,8 +133,8 @@
   }
 }
 .team__photo {
-  background-color: #fff;
-  width: 100px;
+  border-radius: 50px 0;
+  margin: 0 auto;
 
   object-fit: cover;
   border-radius: 50px 0;
@@ -153,14 +158,20 @@
   overflow: hidden;
 }
 .item-developer {
-  width: calc((100% - 0px) / 2);
+  width: calc((100% - 10px) / 2);
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  // width: calc((100% - 0px) / 2);
   margin-bottom: 10px;
   @include mq(tablet) {
     width: calc((100% - 40px) / 3);
   }
-  @include mq(desktop) {
-    width: calc((100% - 40px) / 4);
-  }
+  // @include mq(desktop) {
+  //   width: calc((100% - 40px) / 4);
+  // }
 }
 .footer__container {
   text-align: center;

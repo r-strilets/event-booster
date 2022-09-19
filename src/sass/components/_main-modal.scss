@@ -1,5 +1,72 @@
-#modal {
-  width: 100%;
-  height: 1010px;
-  background-color: aqua;
+.main-modal {
+  position: absolute;
+  z-index: 100;
+  top: 10vh;
+  left: 50%;
+
+  transform: translate(-50%, 0%);
+  background-color: #fff;
+
+  border-radius: 50px 0;
+
+  width: 280px;
+  height: 952px;
+  @include mq(tablet) {
+    width: 704px;
+    height: 845px;
+  }
+  @include mq(desktop) {
+    width: 1034px;
+    height: 1010px;
+  }
+}
+.modal-backdrop {
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.close__modal {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+  padding: 0;
+  width: 35px;
+  height: 35px;
+  outline: none;
+  background-color: unset;
+
+  border: 1px solid transparent;
+  fill: #4c00fe;
+  transition: fill;
+}
+.card-wrap {
+  @include mq(tablet) {
+    display: flex;
+    gap: 32px;
+  }
+}
+.big_image {
+  display: none;
+  object-fit: cover;
+
+  @include mq(tablet) {
+    display: block;
+    width: 249px;
+    height: 445px;
+  }
+  @include mq(desktop) {
+    width: 427px;
+    height: 664px;
+  }
 }

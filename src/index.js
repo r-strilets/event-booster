@@ -2,7 +2,6 @@ import './js/createMarkup';
 import { EventAPI } from './js/eventapi';
 import { addCountryInSelectList } from './js/AllCountry';
 import { createModal } from './js/mainModal';
-// import { searcEventandCreateMarcup } from './js/search';
 import { countryCodes } from './js/AllCountry';
 import badRequestImg from './images/catSearch.svg';
 import './js/ourModal';
@@ -11,12 +10,15 @@ import './js/paginationNumbers';
 import { fetchEvents } from './js/fetchEvents';
 import { createMarkup } from './js/createMarkup';
 import { createPaginationMarcup } from './js/paginationNumbers';
+import _debounce from 'debounce';
 
 const paginationIteam = document.querySelector('.pagination');
 const gallery = document.querySelector('.gallery');
 const mainModal = document.querySelector('.createInfo');
 const form = document.querySelector('form');
 const formCountryInput = document.querySelector('#myCountry');
+const openMainModal = document.querySelector('.modal-backdrop');
+const closeMainModal = document.querySelector('.close__modal');
 
 // відслідковування пошукового інпуту
 const searchInput = document.querySelector('.form-input');
@@ -40,6 +42,7 @@ async function searcEventandCreateMarcup(data) {
       currentBTN.classList.add('pagination__btn--current');
     } catch (error) {}
   }
+  formCountryInput.value = '';
 }
 // перший виклик функції
 searcEventandCreateMarcup('');
@@ -78,14 +81,30 @@ function refreshCountry(e) {
     gallery.innerHTML = `<p class="header-title">Our cats did not find anything, please change your request or select another country</p><div class="bad--request"><img src="${badRequestImg}}" alt="Our cats did not find anything" width ="400px"/><a class="button" href="index.html">RETURN TO HOME</a></div>`;
   }
 }
-formCountryInput.addEventListener('input', refreshCountry);
+formCountryInput.addEventListener('input', _debounce(refreshCountry, 1000));
 
 gallery.addEventListener('click', e => {
   e.preventDefault();
   const eventCardID = e.target.closest('.gallery__item').id;
   const eventsID = events.filter(event => event.id === eventCardID);
   if (events) {
+    openMainModal.removeAttribute('hidden');
     mainModal.innerHTML = createModal(eventsID);
+    const bodyForBcdrop = document.querySelector('body');
+    bodyForBcdrop.classList.add('no-scroll');
+
+    openMainModal.addEventListener('click', onBackdropClick);
+    function onBackdropClick(e) {
+      e.preventDefault();
+      if (e.target === e.currentTarget) {
+        bodyForBcdrop.classList.remove('no-scroll');
+        openMainModal.setAttribute('hidden', 'true');
+      }
+    }
+    closeMainModal.addEventListener('click', e => {
+      e.preventDefault(), openMainModal.setAttribute('hidden', 'true');
+      bodyForBcdrop.classList.remove('no-scroll');
+    });
   }
   const modalButton = document.querySelector('.info__button');
   modalButton.addEventListener('click', googleSearch);

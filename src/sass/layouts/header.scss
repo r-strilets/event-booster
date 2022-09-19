@@ -172,13 +172,13 @@
   appearance: none;
 }
 
-.form-select:not([multiple]) {
-  padding-right: 1.2em;
-  background-repeat: no-repeat;
-  background-position: calc(100% - 0.8em) 1.1em;
-  background-size: 0.85em auto;
-  background-image: url('../images/arrow.png');
-}
+// .form-select:not([multiple]) {
+//   padding-right: 1.2em;
+//   background-repeat: no-repeat;
+//   background-position: calc(100% - 0.8em) 1.1em;
+//   background-size: 0.85em auto;
+//   background-image: url('../images/arrow.png');
+// }
 
 /* скроет иконку стрелки в IE */
 select::-ms-expand {

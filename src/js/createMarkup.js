@@ -1,3 +1,4 @@
+import sprite from '../images/sprite.svg';
 const query = {
   desktop: 'TABLET_LANDSCAPE_LARGE_16_9',
   tablet: 'TABLET_LANDSCAPE_16_9',
@@ -23,7 +24,6 @@ function searchSuitableImg(event, params) {
   return searchImg;
 }
 export function createMarkup(events) {
-  let id = 0;
   return events
     .map(
       event => `<li class="gallery__item" id='${event.id}'> 
@@ -74,7 +74,7 @@ export function createMarkup(events) {
   rel="noopener noreferrer nofollow"
   title="find location in google">
  <svg class="gallery__icon" width="10px" height="10px">
-      <use href="./images/sprite.svg#icon-geolocation"></use>
+      <use href="${sprite}#icon-geolocation"></use>
     </svg>
     ${event?._embedded?.venues[0].name}</a>
 </li>

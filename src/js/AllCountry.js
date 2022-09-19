@@ -1,4 +1,4 @@
-const countryCodes = [
+export const countryCodes = [
   { code: 'US', name: 'United States Of America' },
   { code: 'AD', name: 'Andorra' },
   { code: 'AI', name: 'Anguilla' },
@@ -83,13 +83,10 @@ const countryCodes = [
   { code: 'UY', name: 'Uruguay' },
   { code: 'VE', name: 'Venezuela' },
 ];
-const select = document.querySelector('.country');
+const select = document.querySelector('#country');
 export function addCountryInSelectList() {
   const selectCountryMarkup = countryCodes
-    .map(
-      countryCode =>
-        `<option value="${countryCode.code}">${countryCode.name}</option>`
-    )
+    .map(countryCode => `<option value="${countryCode.name}">`)
     .join('');
   select.insertAdjacentHTML('beforeend', selectCountryMarkup);
 }

@@ -33,11 +33,22 @@ searchInput.addEventListener('input', e => {
 // функція пошуку події і створення розмітки
 async function searcEventandCreateMarcup(data) {
   paginationIteam.innerHTML = '';
-  formCountryInput.placeholder =
-    `${formCountryInput.value}` || 'Choose a country:';
+  let actualCountry;
+  try {
+    actualCountry = countryCodes.filter(
+      codes => codes.code === EventAPI.countryCode
+    )[0].name;
+  } catch (error) {}
+  console.log(actualCountry && actualCountry !== 'All Country');
+  if (actualCountry && actualCountry !== 'All Country') {
+    formCountryInput.placeholder = `${actualCountry}`;
+  } else {
+    formCountryInput.placeholder = 'Choose a country:';
+    EventAPI.countryCode = '';
+  }
+  formCountryInput.value = '';
   if (EventAPI.countryCode === 'RU') {
     gallery.innerHTML = `<img src="${patron}" alt="Our cats stnd with UKRAINE"/>`;
-    formCountryInput.value = '';
   } else {
     const response = await fetchEvents(data);
     if (response) {
@@ -52,7 +63,6 @@ async function searcEventandCreateMarcup(data) {
       );
       currentBTN.classList.add('pagination__btn--current');
     }
-    formCountryInput.value = '';
   }
 }
 // Виклик для пошуку та рендеру карток за запитом у інпуті

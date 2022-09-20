@@ -31,10 +31,10 @@ searchInput.addEventListener('input', e => {
 });
 // функція пошуку події і створення розмітки
 async function searcEventandCreateMarcup(data) {
+  paginationIteam.innerHTML = '';
   formCountryInput.placeholder =
     `${formCountryInput.value}` || 'Choose a country:';
   if (EventAPI.countryCode === 'RU') {
-    paginationIteam.innerHTML = '';
     gallery.innerHTML = `<img src="${patron}" alt="Our cats stnd with UKRAINE"/>`;
     formCountryInput.value = '';
   } else {
@@ -43,7 +43,6 @@ async function searcEventandCreateMarcup(data) {
       events = response.events;
       const totalPages = response.allData.page.totalPages;
       const currentPage = response.allData.page.number;
-      paginationIteam.innerHTML = '';
       EventAPI.page = 0;
       gallery.innerHTML = createMarkup(events);
       createPaginationMarcup(totalPages, currentPage);

@@ -93,12 +93,12 @@ gallery.addEventListener('click', e => {
     const bodyForBcdrop = document.querySelector('body');
     bodyForBcdrop.classList.add('no-scroll');
     if (eventsID[0].priceRanges) {
-      const btnToBuy = document.querySelector('.buy__button');
-      btnToBuy.addEventListener('click', infoSearch);
-      function infoSearch(resp) {
-        console.dir(eventsID);
-        window.open(`${eventsID[0].url}`);
-      }
+      const btnToBuy = document.querySelectorAll('.buy__button');
+      btnToBuy.forEach(btn =>
+        btn.addEventListener('click', resp => {
+          window.open(`${eventsID[0].url}`);
+        })
+      );
     }
     openMainModal.addEventListener('click', onBackdropClick);
     function onBackdropClick(e) {
@@ -106,12 +106,22 @@ gallery.addEventListener('click', e => {
       if (e.target === e.currentTarget) {
         bodyForBcdrop.classList.remove('no-scroll');
         openMainModal.setAttribute('hidden', 'true');
+        document.removeEventListener('keydown', closeModal);
       }
     }
+
     closeMainModal.addEventListener('click', e => {
       e.preventDefault(), openMainModal.setAttribute('hidden', 'true');
       bodyForBcdrop.classList.remove('no-scroll');
+      document.addEventListener('keydown', closeModal);
     });
+
+    function closeModal(e) {
+      if (e.code === 'Escape') {
+        openMainModal.setAttribute('hidden', 'true');
+        document.removeEventListener('keydown', closeModal);
+      }
+    }
   }
   const modalButton = document.querySelector('.info__button');
   modalButton.addEventListener('click', googleSearch);

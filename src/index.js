@@ -71,7 +71,6 @@ function refreshCountry(countryInput) {
       const countryCode = country[0].code;
       EventAPI.countryCode = countryCode;
     } catch (error) {
-      alert('Please choose a valid country');
       EventAPI.countryCode = countryInput.target.value;
     }
   } else if (!countryInput.target.value) {

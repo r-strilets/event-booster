@@ -1,4 +1,5 @@
 export const countryCodes = [
+  { code: '', name: 'All Country' },
   { code: 'US', name: 'United States Of America' },
   { code: 'AD', name: 'Andorra' },
   { code: 'AI', name: 'Anguilla' },

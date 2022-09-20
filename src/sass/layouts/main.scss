@@ -153,6 +153,7 @@
   bottom: 20px;
   border: 2px solid var(--accent--color);
   border-radius: 50%;
+  z-index: 50;
 
   cursor: pointer;
   transition: all 0.3s ease-in-out;

@@ -92,7 +92,14 @@ gallery.addEventListener('click', e => {
     mainModal.innerHTML = createModal(eventsID);
     const bodyForBcdrop = document.querySelector('body');
     bodyForBcdrop.classList.add('no-scroll');
-
+    if (eventsID[0].priceRanges) {
+      const btnToBuy = document.querySelector('.buy__button');
+      btnToBuy.addEventListener('click', infoSearch);
+      function infoSearch(resp) {
+        console.dir(eventsID);
+        window.open(`${eventsID[0].url}`);
+      }
+    }
     openMainModal.addEventListener('click', onBackdropClick);
     function onBackdropClick(e) {
       e.preventDefault();

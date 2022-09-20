@@ -112,6 +112,7 @@ gallery.addEventListener('click', card => {
     function closeModal(e) {
       if (e.code === 'Escape') {
         openMainModal.setAttribute('hidden', 'true');
+        bodyForBcdrop.classList.remove('no-scroll');
         document.removeEventListener('keydown', closeModal);
       }
     }

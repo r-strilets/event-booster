@@ -1,3 +1,4 @@
+import sprite from '../images/sprite.svg';
 export function createModal(response) {
   return response.reduce((acc, resp) => {
     const arr = resp.images.map(image => image.width).sort((a, b) => b - a);
@@ -8,7 +9,7 @@ export function createModal(response) {
     return (
       acc +
       ` <div class="event-card ">
-    <img src="${findImage}" width="132" higth="132" class="small_image"/>
+    <div class="small_image-container"><img src="${findImage}" width="132" higth="132" class="small_image"/></div>
     <div class="card-wrap">
               <img
                 src="${findImage}"
@@ -38,9 +39,12 @@ export function createModal(response) {
                 resp?.priceRanges
                   ?.map(
                     price => `<p class="info-item">
-                <b>PRICES </b><br> ${
-                  price.type.charAt(0).toUpperCase() + price.type.slice(1)
-                } ${price.min}-${price.max} ${price.currency}<br>
+                <b>PRICES </b><br>
+                 <svg class="price__icon">
+      <use href="${sprite}#icon-ticket1"></use>
+    </svg> ${price.type.charAt(0).toUpperCase() + price.type.slice(1)} ${
+                      price.min
+                    }-${price.max} ${price.currency}<br>
                 <button class="buy__button">BUY TICKETS</button>
               </p>`
                   )

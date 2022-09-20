@@ -19,13 +19,35 @@
   border-radius: 150px 0;
 
   width: 280px;
-
+  animation-duration: 1000ms;
+  animation-name: slidein;
   @include mq(tablet) {
     width: 704px;
     border-radius: 300px 0;
   }
   @include mq(desktop) {
     width: 1034px;
+  }
+}
+
+.modal-backdrop {
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+@keyframes slidein {
+  from {
+    left: 100%;
+  }
+
+  to {
+    left: 50%;
   }
 }
 

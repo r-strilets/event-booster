@@ -19,6 +19,7 @@ const openMainModal = document.querySelector('.modal-backdrop');
 const closeMainModal = document.querySelector('.close__modal');
 const paginationList = document.querySelector('.pagination');
 const searchInput = document.querySelector('.form-input');
+const animateModal = document.querySelector('.main-modal');
 let inputValue;
 let events;
 // перший виклик функції

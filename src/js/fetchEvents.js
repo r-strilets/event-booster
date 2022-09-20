@@ -34,10 +34,12 @@ export async function fetchEvents(data) {
   let eventsArray;
   try {
     eventsArray = { events: response._embedded.events, allData: response };
+  } catch (error) {}
+  if (eventsArray) {
     spin = document.querySelector('.spinner');
     spin.remove();
     failed.innerHTML = '';
-  } catch (error) {
+  } else {
     paginationIteam.innerHTML = '';
     spin.remove();
     gallery.innerHTML = '';

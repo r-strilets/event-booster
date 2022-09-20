@@ -2,7 +2,7 @@ import sprite from '../images/sprite.svg';
 export function createModal(response) {
   return response.reduce((acc, resp) => {
     const arr = resp.images.map(image => image.width).sort((a, b) => b - a);
-
+    const motherfucker = resp.dates.start.localTime.slice(0, 5);
     const findImage = resp.images.filter(image => image.width === arr[0])[0]
       .url;
 
@@ -22,7 +22,7 @@ export function createModal(response) {
               </p>
               <p class="info-item">
                 <b>WHEN</b><br>${resp.dates.start.localDate}<br>
-                ${resp.dates.start.localTime || ''} ${
+                ${resp.dates.start.localTime.slice(0, 5) || ''} ${
         resp.dates.timezone ? `(${resp.dates.timezone})` : ''
       }
               </p>

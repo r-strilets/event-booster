@@ -1,9 +1,18 @@
+.modal-backdrop {
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
 .main-modal {
   position: absolute;
   z-index: 100;
   top: 10vh;
   left: 50%;
-
   transform: translate(-50%, 0%);
   background-color: #fff;
 
@@ -63,11 +72,13 @@
   transition: fill;
 }
 .card-wrap {
+  margin-bottom: 80px;
   padding-top: 10px;
   @include mq(tablet) {
     display: flex;
     gap: 32px;
     padding-top: 33px;
+    margin-bottom: 20px;
   }
   @include mq(desktop) {
     padding-top: 40px;
@@ -97,13 +108,13 @@
   object-fit: cover;
 }
 .createInfo {
-  padding: 80px 18px 110px;
+  padding: 80px 18px 0px;
   @include mq(tablet) {
-    padding: 32px 49px 40px 87px;
+    padding: 32px 49px 0px 87px;
   }
 
   @include mq(desktop) {
-    padding: 54px 74px 40px;
+    padding: 54px 74px 0px;
   }
 }
 .small_image-container {
@@ -166,6 +177,11 @@ b {
   font-size: 16px;
   line-height: 1.2;
   color: var(--primary-text-color);
+
+  margin-top: 16px;
+  @include mq(tablet) {
+    margin-top: 20px;
+  }
 }
 .price__icon {
   width: 24px;
@@ -173,5 +189,28 @@ b {
   @include mq(desktop) {
     width: 29px;
     height: 19px;
+  }
+}
+.info__button {
+  display: block;
+  margin: 0 auto;
+  background-color: transparent;
+  border: 1px solid var(--btn-background-modal);
+  color: var(--btn-background-modal);
+  margin-bottom: 100px;
+  border-radius: 5px;
+  width: 230px;
+  height: 40px;
+  @include mq(tablet) {
+    margin-bottom: 40px;
+    width: 255px;
+  }
+  &:hover,
+  &:focus {
+    color: var(--primary-text-color);
+    background-color: var(--btn-background-modal);
+    @include mq(tablet) {
+      transform: scale(1.25);
+    }
   }
 }

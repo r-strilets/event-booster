@@ -9,6 +9,7 @@
   refs.openModalBtn.addEventListener('click', toggleModal);
   refs.closeModalBtn.addEventListener('click', toggleModal);
   refs.backdrop.addEventListener('click', onBackdropClick);
+
   // refs.modalFooter.addEventListener('keydown', onCloseEscape);
   function onBackdropClick(e) {
     e.preventDefault();

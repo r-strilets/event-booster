@@ -18,7 +18,6 @@ function searchSuitableImg(event, params) {
     .map(e => {
       if (e.includes(params)) {
         searchImg = e;
-        return searchImg;
       }
     });
   return searchImg;
@@ -67,16 +66,18 @@ export function createMarkup(events) {
   <a href='https://www.google.com/search?q=${
     event?._embedded?.venues[0].name
   }&oq=${
-        event?._embedded?.venues[0].name
+        event?._embedded?.venues[0].name || ''
       }k&aqs=chrome..69i57j0i512l2j0i22i30l7.661j0j7&sourceid=chrome&ie=UTF-8'class="gallery__location"
   class='gallery__location'
   target="_blank"
+  type="url"
   rel="noopener noreferrer nofollow"
   title="find location in google">
  <svg class="gallery__icon" width="10px" height="10px">
-      <use href="${sprite}#icon-geolocation"></use>
+      <use href="${event?._embedded?.venues[0].name ? sprite : ''}
+}#icon-geolocation"></use>
     </svg>
-    ${event?._embedded?.venues[0].name}</a>
+    ${event?._embedded?.venues[0].name || ''}</a>
 </li>
 `
     )

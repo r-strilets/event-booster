@@ -8,6 +8,7 @@ import { fetchEvents } from './js/fetchEvents';
 import { createMarkup } from './js/createMarkup';
 import { createPaginationMarcup } from './js/paginationNumbers';
 import _debounce from 'debounce';
+import patron from './images/patron.jpg';
 
 const paginationIteam = document.querySelector('.pagination');
 const gallery = document.querySelector('.gallery');
@@ -30,19 +31,29 @@ searchInput.addEventListener('input', e => {
 });
 // функція пошуку події і створення розмітки
 async function searcEventandCreateMarcup(data) {
-  const response = await fetchEvents(data);
-  if (response) {
-    events = response.events;
-    const totalPages = response.allData.page.totalPages;
-    const currentPage = response.allData.page.number;
+  formCountryInput.placeholder =
+    `${formCountryInput.value}` || 'Choose a country:';
+  if (EventAPI.countryCode === 'RU') {
     paginationIteam.innerHTML = '';
-    EventAPI.page = 0;
-    gallery.innerHTML = createMarkup(events);
-    createPaginationMarcup(totalPages, currentPage);
-    const currentBTN = document.querySelector(`button[value='${currentPage}']`);
-    currentBTN.classList.add('pagination__btn--current');
+    gallery.innerHTML = `<img src="${patron}" alt="Our cats stnd with UKRAINE"/>`;
+    formCountryInput.value = '';
+  } else {
+    const response = await fetchEvents(data);
+    if (response) {
+      events = response.events;
+      const totalPages = response.allData.page.totalPages;
+      const currentPage = response.allData.page.number;
+      paginationIteam.innerHTML = '';
+      EventAPI.page = 0;
+      gallery.innerHTML = createMarkup(events);
+      createPaginationMarcup(totalPages, currentPage);
+      const currentBTN = document.querySelector(
+        `button[value='${currentPage}']`
+      );
+      currentBTN.classList.add('pagination__btn--current');
+    }
+    formCountryInput.value = '';
   }
-  formCountryInput.value = '';
 }
 // Виклик для пошуку та рендеру карток за запитом у інпуті
 form.addEventListener('submit', e => {
@@ -57,8 +68,13 @@ function refreshCountry(countryInput) {
       query.name.toLowerCase() === countryInput.target.value.toLowerCase()
   );
   if (countryInput.target.value) {
-    const countryCode = country[0].code;
-    EventAPI.countryCode = countryCode;
+    try {
+      const countryCode = country[0].code;
+      EventAPI.countryCode = countryCode;
+    } catch (error) {
+      alert('Please choose a valid country');
+      EventAPI.countryCode = countryInput.target.value;
+    }
   } else if (!countryInput.target.value) {
     EventAPI.countryCode = '';
   }

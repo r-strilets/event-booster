@@ -45,6 +45,7 @@
   margin-bottom: 32px;
   width: calc((100% - 30px) / 2);
   animation: animate125 750ms;
+  cursor: pointer;
 
   @include mq(tablet) {
     width: calc((100% - 129px) / 4);

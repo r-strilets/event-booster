@@ -58,5 +58,3 @@ export function createModal(response) {
     );
   }, ``);
 }
-
-// console.dir(resp),

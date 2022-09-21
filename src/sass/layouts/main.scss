@@ -1,6 +1,25 @@
 .main {
   min-height: 340px;
 }
+.main-title {
+  font-size: 18px;
+  font-weight: 900;
+  line-height: calc(22 / 18);
+  text-align: center;
+  color: var(--second-text-color);
+  margin-top: -50px;
+
+  animation: boxShadow 3000ms infinite 1000ms;
+  @include mq(tablet) {
+    font-size: 30px;
+    line-height: calc(37 / 30);
+  }
+  @include mq(desktop) {
+    font-size: 50px;
+    line-height: calc(61 / 50);
+    margin-bottom: 48px;
+  }
+}
 .gallery {
   text-align: center;
   position: relative;
@@ -155,7 +174,6 @@
   border-radius: 50%;
   z-index: 50;
 
-  cursor: pointer;
   transition: all 0.3s ease-in-out;
 
   @include mq(desktop) {

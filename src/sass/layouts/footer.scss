@@ -23,7 +23,6 @@
   margin-top: 10px;
   &:hover,
   &:focus {
-    transform: scale(1.1);
     box-shadow: 0 0 30px #ff0bef;
     outline: none;
   }
@@ -35,9 +34,10 @@
 .is-hidden {
   visibility: hidden;
 }
-// .footer_backdrop.is-hidden .modal_footer {
-//   transform: scale(0.8);
-// }
+
+.footer_backdrop.is-hidden .modal_footer {
+  transform: translate(-100%);
+}
 .footer_backdrop {
   position: fixed;
   top: 0;
@@ -46,8 +46,10 @@
   z-index: 99;
   background: rgba(0, 0, 0, 0.5);
   opacity: 1;
+
   transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  overflow: auto;
+  overflow-x: auto;
+  overflow-y: none;
 }
 
 .modal_footer {
@@ -57,19 +59,19 @@
   min-width: 80%;
   padding: 20px;
   background: rgba(47, 4, 61, 0.81);
-  transform: translate(-50%, -50%) scale(1);
+  transform: translate(-50%, -50%);
   opacity: 1;
 
-  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 
-  box-shadow: rgba(0, 0, 0, 0.2);
-  box-shadow: rgba(0, 0, 0, 0.14);
-  box-shadow: rgba(0, 0, 0, 0.12);
   border-radius: 50px 0;
   z-index: 100;
   @include mq(tablet) {
     min-width: 50%;
+    top: 15%;
+    left: 100%;
+    transform: translate(-150%, 0%);
   }
   @include mq(desktop) {
     max-width: 40%;

@@ -3,7 +3,7 @@ import { addCountryInSelectList } from './js/AllCountry';
 import { createModal } from './js/mainModal';
 import { countryCodes } from './js/AllCountry';
 import './js/ourModal';
-import './js/button';
+import './js/scrollToTopButton';
 import { fetchEvents } from './js/fetchEvents';
 import { createMarkup } from './js/createMarkup';
 import { createPaginationMarcup } from './js/paginationNumbers';
@@ -19,9 +19,10 @@ const openMainModal = document.querySelector('.modal-backdrop');
 const closeMainModal = document.querySelector('.close__modal');
 const paginationList = document.querySelector('.pagination');
 const searchInput = document.querySelector('.form-input');
-const animateModal = document.querySelector('.main-modal');
+
 let inputValue;
 let events;
+
 // перший виклик функції
 searcEventandCreateMarcup('');
 // Додавання країн до випадаючого списку
@@ -39,7 +40,6 @@ async function searcEventandCreateMarcup(data) {
       codes => codes.code === EventAPI.countryCode
     )[0].name;
   } catch (error) {}
-  console.log(actualCountry && actualCountry !== 'All Country');
   if (actualCountry && actualCountry !== 'All Country') {
     formCountryInput.placeholder = `${actualCountry}`;
   } else {
@@ -48,7 +48,8 @@ async function searcEventandCreateMarcup(data) {
   }
   formCountryInput.value = '';
   if (EventAPI.countryCode === 'RU') {
-    gallery.innerHTML = `<img src="${patron}" alt="Our cats stnd with UKRAINE"/>`;
+    gallery.innerHTML = `<img src="${patron}" alt="Our cats stand with UKRAINE"/>`;
+    EventAPI.countryCode = '';
   } else {
     const response = await fetchEvents(data);
     if (response) {
@@ -90,7 +91,7 @@ function refreshCountry(countryInput) {
   searcEventandCreateMarcup(inputValue);
 }
 // виклик функції оновлення за країною.
-formCountryInput.addEventListener('input', _debounce(refreshCountry, 1000));
+formCountryInput.addEventListener('input', _debounce(refreshCountry, 1500));
 // Функція для зміни сторінки пошуку за допомогою пагінації
 paginationList.addEventListener('click', evt => {
   if (evt.target.type === 'button') {
